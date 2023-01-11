@@ -1,0 +1,199 @@
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    height: calc(100vh - 30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 15px;
+
+    @media only screen and (min-width: 1200px) {
+        & {
+            max-width: 1140px;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        & {
+            // background-color: blue;
+            max-width: 960px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        & {
+            max-width: 720px;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        & {
+            max-width: 540px;
+        }
+    }
+
+    @media only screen and (max-width: 575px) {
+        & {
+            max-width: 100%;
+        }
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        // padding: 0 20px;
+
+        h1 {
+            font-size: 15px;
+        }
+
+        button {
+            color: black;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: -8px 0px 20px rgb(5 162 194 / 30%), 0px 0px 20px rgb(112 225 200 / 30%), 8px 0px 20px rgb(255 178 36 / 30%);
+            transition: all .3s;
+
+            &:hover {
+                background-color: hsla(0, 0%, 100%, .9);
+            }
+        }
+    }
+
+    .image {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        user-select: none;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: row;
+        background-color: red;
+        height: 600px;
+
+        @media only screen and (max-width: 768px) {
+            & {
+                height: 400px;
+            }
+        }
+
+        .name {
+            font-weight: 700;
+            font-size: 20px;
+            -webkit-text-fill-color: transparent;
+            background: -webkit-linear-gradient(left, #8769f9, #b447fc);
+            -webkit-background-clip: text;
+        }
+
+        .description {
+            color: rgba(239, 247, 255, .615);
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .hoverMe {
+            color: rgba(255, 140, 63, .98);
+            background-color: rgba(253, 84, 0, .117);
+            width: fit-content;
+            font-size: 12px;
+            padding: 4px 15px;
+            font-weight: 500;
+            border-radius: 20px;
+        }
+
+        .leftHero {
+            flex: 1 1 0;
+            // background-color: rebeccapurple;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media only screen and (max-width: 768px) {
+                & {
+                    flex: 1;
+                }
+            }
+
+
+            .hello {
+                margin-bottom: 0;
+            }
+
+            .paragraph {
+                margin: 5px 0;
+            }
+
+        }
+
+        .rightHero {
+            flex: 1 1 0;
+
+            @media only screen and (max-width: 768px) {
+                & {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .imageBottom {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        user-select: none;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .socialMedia {
+            display: flex;
+            gap: 20px;
+
+            a {
+                &:hover {
+                    svg path {
+                        fill: rgba(253, 254, 255, .927);
+                    }
+                }
+            }
+
+            a svg path {
+                transition: all .3s;
+                fill: rgba(239, 247, 255, .615);
+            }
+        }
+
+        .policy {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+
+            a {
+                text-decoration: none;
+                color: rgba(239, 247, 255, .615);
+                transition: all .3s;
+
+                &:hover {
+                    color: rgba(253, 254, 255, .927);
+                }
+            }
+        }
+    }
+}
