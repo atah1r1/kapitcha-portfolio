@@ -26,7 +26,7 @@
 
     .modal {
         width: 300px;
-        height: 500px;
+        height: 530px;
         padding: 20px;
         border-radius: 12px;
         border: 1px solid rgba(223, 239, 254, .139);
@@ -100,6 +100,23 @@
                     &:focus {
                         border: 2px solid rgba(223, 239, 254, 0.466);
                     }
+                }
+            }
+
+            .submitButton {
+                width: 100%;
+                margin-bottom: 10px;
+                color: black;
+                background-color: white;
+                padding: 10px 20px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                box-shadow: -8px 0px 20px rgb(5 162 194 / 30%), 0px 0px 20px rgb(112 225 200 / 30%), 8px 0px 20px rgb(255 178 36 / 30%);
+                transition: all .3s;
+    
+                &:hover {
+                    background-color: hsla(0, 0%, 100%, .9);
                 }
             }
         }

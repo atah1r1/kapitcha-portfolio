@@ -29,6 +29,7 @@ export default function Modal({ showModal, setShowModal }) {
                                 <label htmlFor="email">Message</label>
                                 <textarea type="text" id="message" rows={6} name="message" placeholder='Enter you message' />
                             </div>
+                            <button disabled className={styles.submitButton}>Submit</button>
                         </form>
                     </div>
                 </section>
