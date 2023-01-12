@@ -1,11 +1,9 @@
 import styles from '../styles/Home.module.scss';
 import Background from '../public/grids.svg';
 import Image from 'next/image';
-// import Spline from '@splinetool/react-spline';
 import dynamic from "next/dynamic"
 import { useEffect, useState } from 'react';
 import Modal from '../src/components/Modal';
-
 
 export default function Home() {
   const Spline = dynamic(() => import("@splinetool/react-spline"), {
@@ -19,18 +17,18 @@ export default function Home() {
       if (e.key === 'Escape') {
         setShowModal(false);
       } else if (e.key === 'a' || e.key === 'A') {
-        console.log('clicked');
+        setShowModal(true);
       }
     });
   }, []);
 
   return (
     <>
-      {/* <Modal /> */}
+      <Modal showModal={showModal} setShowModal={setShowModal}  />
       <section className={styles.container}>
         <div className={styles.header}>
           <h1>Kapitcha</h1>
-          <button>Contact me</button>
+          <button onClick={() => setShowModal(true)}>Contact me</button>
         </div>
         <Image src={Background} alt="background_top" className={styles.image} priority></Image>
         <div className={styles.hero}>

@@ -18,3 +18,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.alert {
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
