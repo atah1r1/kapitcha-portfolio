@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspree/react": "^2.4.1",
     "@next/font": "13.1.1",
     "@splinetool/react-spline": "^2.2.5",
     "@splinetool/runtime": "^0.9.180",

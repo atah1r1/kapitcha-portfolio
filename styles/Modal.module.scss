@@ -105,7 +105,7 @@
 
             .submitButton {
                 width: 100%;
-                margin-bottom: 10px;
+                margin-bottom: 2px;
                 color: black;
                 background-color: white;
                 padding: 10px 20px;
@@ -119,6 +119,12 @@
                     background-color: hsla(0, 0%, 100%, .9);
                 }
             }
+        }
+
+        .successMessage {
+            color: white;
+            text-align: center;
+            font-size: 10px;
         }
     }
 }

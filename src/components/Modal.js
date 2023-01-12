@@ -1,6 +1,10 @@
 import styles from '../../styles/Modal.module.scss';
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function Modal({ showModal, setShowModal }) {
+
+    const [state, handleSubmit] = useForm("mayzygre");
+
     return (
         showModal ?
             <>
@@ -16,21 +20,39 @@ export default function Modal({ showModal, setShowModal }) {
                             <h1>Contact Me</h1>
                             <p>Send a message to me and I will get back to you as soon as possible.</p>
                         </div>
-                        <form className={styles.form}>
+                        <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.formGroup}>
                                 <label htmlFor="name">Full name</label>
                                 <input type="text" id="name" name="name" placeholder='Enter you full name' />
+                                <ValidationError
+                                    prefix="Name"
+                                    field="name"
+                                    errors={state.errors}
+                                />
                             </div>
                             <div className={styles.formGroup}>
                                 <label htmlFor="email">Email Address</label>
                                 <input type="text" id="email" name="email" placeholder='Enter you email adress' />
+                                <ValidationError
+                                    prefix="Email"
+                                    field="email"
+                                    errors={state.errors}
+                                />
                             </div>
                             <div className={styles.formGroup}>
-                                <label htmlFor="email">Message</label>
+                                <label htmlFor="message">Message</label>
                                 <textarea type="text" id="message" rows={6} name="message" placeholder='Enter you message' />
+                                <ValidationError
+                                    prefix="Message"
+                                    field="message"
+                                    errors={state.errors}
+                                />
                             </div>
-                            <button disabled className={styles.submitButton}>Submit</button>
+                            <button disabled={state.submitting} type="submit" className={styles.submitButton}>Submit</button>
                         </form>
+                        {state.succeeded && (
+                            <p className={styles.successMessage}>Thanks for contacting me!</p>
+                        )}
                     </div>
                 </section>
             </> : null
