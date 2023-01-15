@@ -2,7 +2,7 @@ import styles from '../styles/Home.module.scss';
 import Background from '../public/grids.svg';
 import Image from 'next/image';
 import dynamic from "next/dynamic"
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import Modal from '../src/components/Modal';
 
 export default function Home() {
@@ -10,25 +10,33 @@ export default function Home() {
     loading: () => <p>Loading...</p>,
   })
 
-  const [showModal, setShowModal] = useState(false);
+  const [isOpen, toggleIsOpen] = useReducer((state, action) => {
+    return action;
+  }, false);
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        setShowModal(false);
+        toggleIsOpen(false);
       } else if (e.key === 'a' || e.key === 'A') {
-        setShowModal(true);
+        toggleIsOpen(true);
       }
     });
   }, []);
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal}  />
+      <Modal showModal={isOpen} setShowModal={toggleIsOpen} />
       <section className={styles.container}>
         <div className={styles.header}>
           <h1>Kapitcha</h1>
-          <button onClick={() => setShowModal(true)}>Contact me</button>
+          <div className={styles.rightHeader}>
+            <button className={styles.work}>
+              Work
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 12H4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <button onClick={() => toggleIsOpen(true)} className={styles.contactMe}>Contact me</button>
+          </div>
         </div>
         <Image src={Background} alt="background_top" className={styles.image} priority></Image>
         <div className={styles.hero}>
@@ -45,6 +53,7 @@ export default function Home() {
               <br />
               looking for new challenges.
             </p>
+            <p className={styles.press}>Press <span>A</span> to contact me</p>
           </div>
           <div className={styles.rightHero}>
             <Spline scene="https://prod.spline.design/x80ZL67KtZKcaFxQ/scene.splinecode" />
