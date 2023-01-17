@@ -35,7 +35,7 @@ export default function Home() {
               Work
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 12H4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
-            <button onClick={() => toggleIsOpen(true)} className={styles.contactMe}>Contact me</button>
+            {!isOpen && <button onClick={() => toggleIsOpen(true)} className={styles.contactMe}>Contact me</button>}
           </div>
         </div>
         <Image src={Background} alt="background_top" className={styles.image} priority></Image>
