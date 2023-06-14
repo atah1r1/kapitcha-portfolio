@@ -4,40 +4,17 @@ import Image from 'next/image';
 import dynamic from "next/dynamic"
 import { useEffect, useReducer } from 'react';
 import Modal from '../src/components/Modal';
+import { useRouter } from 'next/router';
+import Layout from '../src/components/Layout';
 
 export default function Home() {
   const Spline = dynamic(() => import("@splinetool/react-spline"), {
     loading: () => <p>Loading...</p>,
   })
 
-  const [isOpen, toggleIsOpen] = useReducer((state, action) => {
-    return action;
-  }, false);
-
-  useEffect(() => {
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        toggleIsOpen(false);
-      } else if (e.key === 'a' || e.key === 'A') {
-        toggleIsOpen(true);
-      }
-    });
-  }, []);
-
   return (
-    <>
-      <Modal showModal={isOpen} setShowModal={toggleIsOpen} />
+    <Layout>
       <section className={styles.container}>
-        <div className={styles.header}>
-          <h1>Kapitcha</h1>
-          <div className={styles.rightHeader}>
-            <button className={styles.work}>
-              Work
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 12H4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </button>
-            {!isOpen && <button onClick={() => toggleIsOpen(true)} className={styles.contactMe}>Contact me</button>}
-          </div>
-        </div>
         <Image src={Background} alt="background_top" className={styles.image} priority></Image>
         <div className={styles.hero}>
           <div className={styles.leftHero}>
@@ -46,7 +23,7 @@ export default function Home() {
             <p className={styles.paragraph}>
               My name is <span className={styles.name}>Amine TAHIRI</span> aka KapitCha,
               <br />
-              I am currently a student at 1337 School in Morocco, Benguerir.
+              I am currently a Technical and Pedagogical Staff at 1337 School in Morocco, Khouribga.
             </p>
             <p className={styles.description}>
               I am a web developer, I love to create new things and I am always
@@ -60,6 +37,36 @@ export default function Home() {
           </div>
         </div>
         <Image src={Background} alt="background_bottom" className={styles.imageBottom} priority></Image>
+          <div className={styles.typeWriter}>
+          <h1>Featured Work</h1>
+          </div>
+        <div className={styles.myWork} id="my_work">
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.
+            </p>
+          </div>
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.</p>
+          </div>
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.</p>
+          </div>
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.</p>
+          </div>
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.</p>
+          </div>
+          <div className={styles.singleWork}>
+            <h3>Data Fetching</h3>
+            <p>Data Fetching methods that run on the server and enable you to render content in different ways.</p>
+          </div>
+        </div>
         <footer className={styles.footer}>
           <div className={styles.socialMedia}>
             <a aria-label="GitHub" target="_blank" href="https://github.com/atah1r1">
@@ -80,6 +87,6 @@ export default function Home() {
           </div>
         </footer>
       </section>
-    </>
+    </Layout>
   )
 }
